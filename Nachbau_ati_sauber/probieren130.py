@@ -140,7 +140,7 @@ plt.axvline(x=15.861, color='r', linestyle='-', label=r'gültig für E > 15.8 ($
 plt.ylim(0, 200)
 plt.xlim(12, 22)
 plt.legend(loc="upper right",fontsize=8)
-plt.title("Pb-Massenabsorptionskoeffizient")
-plt.savefig("Pb_Massenabsorptionskoeffizient.png", dpi=600, bbox_inches='tight')
+plt.title("Pb Massenabsorptionskoeffizient")
+plt.savefig("C:\\Users\\julia\\OneDrive\\Dokumente\\A_Christian\\Masterarbeit\\Masterarbeit\\Pb_Massenabsorptionskoeffizient.png", dpi=600, bbox_inches='tight')
 plt.show()
 

@@ -16,7 +16,7 @@ L3 = np.array([x_ele.TauN(xi) for xi in x])
 
 colors = ["tab:blue", "tab:orange", "tab:green", "tab:red", "tab:purple"]
 
-plt.figure(figsize=(8, 5))
+#plt.figure(figsize=(8, 5))
 
 #plt.plot(x, K,     color=colors[2], label=r"$\tau$ (gesamt)")
 plt.plot(x, L1,     color=colors[2], label=r"$\tau$ - $\tau_K$")
