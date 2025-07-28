@@ -14,7 +14,7 @@ def residuals(params, x, y):
 
 
 initial_guess = [0.1, 14]
-initial_guess = [2, 2]
+#initial_guess = [2, 2]
 
 # Fit durchführen
 result = least_squares(residuals, initial_guess, args=(x, y), max_nfev=1000, method="trf")

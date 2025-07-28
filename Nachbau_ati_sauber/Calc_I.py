@@ -1793,6 +1793,10 @@ class Calc_I():
                 Startwerte = [np.random.uniform(low, high) for low, high in grenzen]
             lower_bounds, upper_bounds = zip(*grenzen)
             print(lower_bounds, upper_bounds)
+            if "method" in kwargs:
+                method = kwargs["method"]
+            else:
+                method = "trf"
             #Elemente_ordnungszahl = [int(Element(Element=ele).Get_Atomicnumber()) for ele in Elemente]
             Elemente_symbol = [Element(Element=ele).Get_Elementsymbol() for ele in Elemente]
             def Residuen(para_res, gemessene_Intensität):
@@ -1825,17 +1829,37 @@ class Calc_I():
                 residuen = np.mean(np.abs(Geo - Mittelwert)) / Mittelwert
                 #residuen = np.mean(np.abs(Geo - Mittelwert))        #ohne relative
                 print(f"Residuen: {residuen}, para_res: {para_res}")
+                if method =="lm":
+                    residuen = (Geo - Mittelwert) / Mittelwert
                 return residuen
                 #return np.mean(np.abs(Geo - Mittelwert))/Mittelwert    #np.mean(np.abs(Geo - Mittelwert))/Mittelwert   wäre % abweichung
             ##Residuen(Startwerte,gemessene_Intensität)
-            result = least_squares(
-            Residuen,
-            Startwerte,  # Startwerte für Konzentrationen
-            args=( gemessene_Intensität,),bounds=(lower_bounds, upper_bounds),  # Übergabe des Modells und der gemessenen Daten
-            max_nfev=10
-            )
-            optimized_Konzentration = result.x
-            return optimized_Konzentration
+
+            print("Teste Residuen bei Startwerten:", Startwerte)
+            resid = Residuen(Startwerte, gemessene_Intensität)
+            print("Residuen:", resid)
+            print("Alle endlich?", np.all(np.isfinite(resid)))
+
+
+            if (method == "lm"):
+                result = least_squares(
+                Residuen,
+                Startwerte,  # Startwerte für Konzentrationen
+                args=( gemessene_Intensität,), # Übergabe des Modells und der gemessenen Daten
+                method='dogbox',
+                max_nfev=10
+                )
+                optimized_Konzentration = result.x
+                return optimized_Konzentration
+            else:
+                result = least_squares(
+                Residuen,
+                Startwerte,  # Startwerte für Konzentrationen
+                args=( gemessene_Intensität,),bounds=(lower_bounds, upper_bounds),  # Übergabe des Modells und der gemessenen Daten
+                max_nfev=10
+                )
+                optimized_Konzentration = result.x
+                return optimized_Konzentration
 
 
 

@@ -37,13 +37,13 @@ Ki = Calc_I()
 #['sigma=8.0000e-01, Totschicht=0.0000e+00, charzucont_L=1.0000e-01, charzucont=9.5000e-01, Kontaktmaterialdicke=3.0000e+01']
 
 
-k=Ki.Kalibrierung_nlls([["Emax"],["Kontaktmaterialdicke"]],
-                       [[35,45],[10,40]], gemessene_Intensität=intensität, Elemente=elemente, Übergänge=Übergänge,
-                       Startwerte=[35, 10])
+#k=Ki.Kalibrierung_nlls([["Emax"],["Kontaktmaterialdicke"]],
+ #                      [[35,45],[10,40]], gemessene_Intensität=intensität, Elemente=elemente, Übergänge=Übergänge,
+ #                      Startwerte=[35, 10],method="lm")
 
 
-#k=Ki.Kalibrierung_nlls([["Einfallswinkelalpha"],["activeLayer"],["Totschicht"],["charzucont_L"],["charzucont"],["Emax"],["Kontaktmaterialdicke"]],
- #                      [[15,25],[2, 4],[0.0, 0.2],[0.1, 1.2],[0.8, 1.1],[35,45],[10,40]], gemessene_Intensität=intensität, Elemente=elemente, Übergänge=Übergänge,
-  #                     Startwerte=[15,3,0,1.2,0.95,45,10])
+k=Ki.Kalibrierung_nlls([["Einfallswinkelalpha"],["activeLayer"],["Totschicht"],["charzucont_L"],["charzucont"],["Emax"],["Kontaktmaterialdicke"]],
+                       [[15,25],[2, 4],[0.0, 0.2],[0.1, 1.2],[0.8, 1.1],[35,45],[10,40]], gemessene_Intensität=intensität, Elemente=elemente, Übergänge=Übergänge,
+                       Startwerte=[15,3,0,1.2,0.95,45,10],method="lm")
 print(k)
 

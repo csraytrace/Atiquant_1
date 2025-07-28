@@ -135,11 +135,11 @@ for i in range(8):
 #file_path = 'C:\\Users\\julia\\OneDrive\\Dokumente\\A_Christian\\Masterarbeit\\Tracormessungen\\Messung2025\\Z_BESTIM\\SPECTRUM.'
 #y_spec=Tracor_daten(file_path+str(209), 0, 1, (0,104,20.1), [False,save])
 
-"""
+
 title_list=[]
 x,y,z = [],[],[]
 for i in range(1):
-    y_spec,title=Tracor_daten(file_path+str(144+i), 0, 1, (0,100,None), [False,save])
+    y_spec,title=Tracor_daten(file_path+str(110+i), 0, 1, (0,100,None), [False,save])
     title_list.append(title)
     #x1,y1,z1 = (process_peaks(y_spec[0],y_spec[1],20,19.2,show_plot=False))
     x1,y1,z1 = process_intervals(y_spec[0],y_spec[1],[18.6,19.86],[19.86,20.59],show_plot=True,titel1=title)
@@ -150,7 +150,7 @@ for i in range(1):
 print(x,y,z)
 print(title_list)
 
-"""
+
 #Tracor_daten(file_path+str(111), 0, 1, (1,104,19.25), [True,save])
 
 #Tracor_daten(file_path+str(121), 0, 1, (1,2,34.7), [True,save])

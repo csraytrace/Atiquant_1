@@ -137,4 +137,11 @@ class Massenschwächungskoeffizient(Datenauslesen):
             return array
 
 
+        def Tau_incoh_energie(self,energie):
+            return self.Get_cm2g() * self.Tau_Schale_Energie(self.Get_McMaster()[5], energie)
+
+        def Tau_coh_energie(self,energie):
+            return self.Get_cm2g() * self.Tau_Schale_Energie(self.Get_McMaster()[4], energie)
+
+
 
